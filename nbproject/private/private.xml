@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/E:/SIG/Sales%20Invoice%20Generator/src/Controller_Invoices/Guide.java</file>
             <file>file:/E:/SIG/Sales%20Invoice%20Generator/src/View_Invoices/InvGUI.java</file>
-            <file>file:/E:/SIG/Sales%20Invoice%20Generator/src/Model_Invoices/Invoices.java</file>
-            <file>file:/E:/SIG/Sales%20Invoice%20Generator/src/Model_Invoices/ItemsTableModel.java</file>
+            <file>file:/E:/SIG/Sales%20Invoice%20Generator/src/View_Invoices/ItemsDialog.java</file>
+            <file>file:/E:/SIG/Sales%20Invoice%20Generator/src/Model_Invoices/InvItems.java</file>
         </group>
     </open-files>
 </project-private>

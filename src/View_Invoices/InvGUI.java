@@ -75,7 +75,7 @@ public class InvGUI extends javax.swing.JFrame {
         deleteInvoiceButton.setText("Delete Invoice");
 
         jLabel1.setBackground(this.getContentPane().getBackground());
-        jLabel1.setText("Inoice Number");
+        jLabel1.setText("Invoice Number");
         jLabel1.setOpaque(true);
 
         jLabel2.setBackground(this.getContentPane().getBackground());
@@ -293,6 +293,7 @@ public class InvGUI extends javax.swing.JFrame {
     private ArrayList<Invoices> invList;
     private Guide guide = new Guide (this);
     private InvoicesTableModel invoicesTableModel;
+    
 
     public ArrayList<Invoices> getInvList() {
         if (invList == null) invList = new ArrayList<>();

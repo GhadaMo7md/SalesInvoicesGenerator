@@ -31,8 +31,8 @@ public class ItemsDialog extends JDialog{
         okBtn = new JButton("OK");
         cancelBtn = new JButton("Cancel");
         
-        okBtn.setActionCommand("createLineOK");
-        cancelBtn.setActionCommand("createLineCancel");
+        okBtn.setActionCommand("item Confirm");
+        cancelBtn.setActionCommand("createItemCancel");
         
         okBtn.addActionListener(frame.getGuide());
         cancelBtn.addActionListener(frame.getGuide());

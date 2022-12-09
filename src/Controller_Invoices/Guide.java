@@ -64,13 +64,13 @@ public class Guide implements ActionListener, ListSelectionListener {
             case "Save Invoice":
                 savInv();
                 break;
-            case "createInvoiceCancel":
+            case "Close Inv":
                 cInvCancel();
                 break;
-            case "createInvoiceOK":
+            case "Confirm":
                 cInvOK();
                 break;
-            case "createitemOK":
+            case "item Confirm":
                 cItemOK();
                 break;
             case "createItemCancel":
@@ -237,9 +237,9 @@ public class Guide implements ActionListener, ListSelectionListener {
         int selectedRow = frame.getItemsTable().getSelectedRow();
 
         if (selectedRow != -1) {
-            ItemsTableModel linesTableModel = (ItemsTableModel) frame.getItemsTable().getModel();
-            linesTableModel.getItems().remove(selectedRow);
-            linesTableModel.fireTableDataChanged();
+            ItemsTableModel itemTable = (ItemsTableModel) frame.getItemsTable().getModel();
+            itemTable.getItems().remove(selectedRow);
+            itemTable.fireTableDataChanged();
             frame.getInvoicesTableModel().fireTableDataChanged();
         }
     }
@@ -255,15 +255,19 @@ public class Guide implements ActionListener, ListSelectionListener {
         String customer = invDialog.getCustNameField().getText();
         int num = frame.getNextInvoiceNum();
         try {
-            String[] dateParts = date.split("-");  // "22-05-2013" -> {"22", "05", "2013"}  xy-qw-20ij
+            String[] dateParts = date.split("-"); 
             if (dateParts.length < 3) {
-                JOptionPane.showMessageDialog(frame, "Wrong date format", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(frame, 
+                                              "Wrong date format", "Error", 
+                                              JOptionPane.ERROR_MESSAGE);
             } else {
                 int day = Integer.parseInt(dateParts[0]);
                 int month = Integer.parseInt(dateParts[1]);
                 int year = Integer.parseInt(dateParts[2]);
                 if (day > 31 || month > 12) {
-                    JOptionPane.showMessageDialog(frame, "Wrong date format", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(frame, 
+                                                  "Wrong date format", "Error", 
+                                                  JOptionPane.ERROR_MESSAGE);
                 } else {
                     Invoices invoice = new Invoices(num, date, customer);
                     frame.getInvList().add(invoice);
@@ -274,7 +278,9 @@ public class Guide implements ActionListener, ListSelectionListener {
                 }
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(frame, "Wrong date format", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(frame, 
+                                          "Wrong date format", "Error",
+                                          JOptionPane.ERROR_MESSAGE);
         }
 
     }
@@ -287,9 +293,9 @@ public class Guide implements ActionListener, ListSelectionListener {
         double price = Double.parseDouble(priceStr);
         int selectedInvoice = frame.getInvoiceTable().getSelectedRow();
         if (selectedInvoice != -1) {
-            Invoices invoice = frame.getInvList().get(selectedInvoice);
-            InvItems items = new InvItems(item, price, count, invoice);
-            invoice.getItems().add(items);
+            Invoices inv = frame.getInvList().get(selectedInvoice);
+            InvItems items = new InvItems(item, price, count, inv);
+            inv.getItems().add(items);
             ItemsTableModel itModel =(ItemsTableModel)  frame.getItemsTable().getModel();
             itModel.fireTableDataChanged();
             frame.getInvoicesTableModel().fireTableDataChanged();

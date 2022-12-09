@@ -13,16 +13,16 @@ import javax.swing.JTextField;
 
 
 public class InvDialog extends JDialog {
-    private JTextField custNameField, invNumField;
+//    private JTextField custNameField, invNumField;
+    private JTextField custNameField;
     private JTextField invDateField;
-    private JLabel custNameLbl,invNoLbl ;
+    private JLabel custNameLbl;
     private JLabel invDateLbl;
     private JButton okBtn;
     private JButton cancelBtn;
 
     public InvDialog(InvGUI frame) {
-        invNoLbl = new JLabel("Inv No:");
-        invNumField = new JTextField(20);
+        
         custNameLbl = new JLabel("Customer Name:");
         custNameField = new JTextField(20);
         invDateLbl = new JLabel("Invoice Date:");
@@ -33,28 +33,12 @@ public class InvDialog extends JDialog {
         okBtn.setActionCommand("Confirm");
         cancelBtn.setActionCommand("Close Inv");
         
-        okBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Invoices addedinvoice = new Invoices(Integer.parseInt(invNumField.getText()),invDateField.getText(),custNameField.getText());
-                frame.getInvList().add(addedinvoice);
-         
-                InvoicesTableModel invoicesTableModel = new InvoicesTableModel(frame.getInvList());
-                frame.setInvoicesTableModel(invoicesTableModel);
-                frame.getInvoiceTable().setModel(invoicesTableModel);
-                frame.getInvoicesTableModel().fireTableDataChanged();
-                dispose();
-            }
-        });
-        cancelBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
+        okBtn.addActionListener(frame.getGuide());
+        cancelBtn.addActionListener(frame.getGuide());
+        setLayout(new GridLayout(3, 2));
         setLayout(new GridLayout(4, 2));
-        add(invNoLbl);
-        add(invNumField);
+        //add(invNoLbl);
+        //add(invNumField);
         add(invDateLbl);
         add(invDateField);
         add(custNameLbl);
