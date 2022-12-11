@@ -70,10 +70,10 @@ public class Guide implements ActionListener, ListSelectionListener {
             case "Confirm":
                 cInvOK();
                 break;
-            case "item Confirm":
+            case "Confirm Item":
                 cItemOK();
                 break;
-            case "createItemCancel":
+            case "Cancel Item":
                 cItemCancel();
                 break;
         }
